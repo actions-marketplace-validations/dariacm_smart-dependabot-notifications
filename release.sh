@@ -29,6 +29,9 @@ if git rev-parse "$TAG" >/dev/null 2>&1; then
   exit 1
 fi
 
+# Refresh git index to avoid false positives from timestamp changes
+git update-index --refresh > /dev/null 2>&1 || true
+
 # Check for uncommitted changes
 if ! git diff-index --quiet HEAD --; then
   echo "Error: You have uncommitted changes. Please commit or stash them first."
