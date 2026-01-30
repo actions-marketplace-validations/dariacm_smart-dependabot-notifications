@@ -1,6 +1,13 @@
 name: 'Smart Dependabot Notifications'
 description: 'Get notified only when dependabot PRs fail checks and cannot be automerged'
 author: 'Daria Carlotta Maino'
+keywords:
+  - dependabot
+  - notifications
+  - pull-request
+  - automerge
+  - code-review
+  - ci-cd
 runs:
   using: 'node24'
   main: 'dist/index.js'
@@ -24,4 +31,4 @@ outputs:
     description: 'The total number of reviewers (users + teams) that were added'
 branding:
   icon: 'bell'
-  color: 'orange'
+  color: 'blue'

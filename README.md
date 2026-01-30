@@ -1,6 +1,13 @@
 # Smart Dependabot Notifications
 
-A GitHub Action that notifies developers only when dependabot pull requests fail checks and cannot be automerged. This prevents notification spam when dependabot pull requests are successfully automerged.
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Smart%20Dependabot%20Notifications-blue.svg?colorA=24292e&colorB=0366d6&style=flat&longCache=true&logo=github)](https://github.com/marketplace/actions/smart-dependabot-notifications)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+A GitHub Action that notifies developers only when dependabot pull requests fail checks and cannot be automerged.
+
+## Why Use This?
+
+When dependabot successfully automerges PRs, you don't need notifications. But when checks fail and manual intervention is needed, this action ensures the right people are notified immediately.
 
 ## Features
 
@@ -8,6 +15,7 @@ A GitHub Action that notifies developers only when dependabot pull requests fail
 - ✅ Only acts on dependabot PRs
 - ✅ Supports both individual reviewers and team reviewers
 - ✅ Customizable comment message
+- ✅ Prevents duplicate notifications
 
 ## Usage
 
@@ -99,8 +107,10 @@ The action requires the following permissions:
 ```yaml
 permissions:
   pull-requests: write  # To request reviewers and post comments
-  actions: read         # To read workflow run information
+  actions: read         # To retrieve workflow run details and verify dependabot triggered it
 ```
+
+**Note**: The `actions: read` permission is specifically needed to call the GitHub API's `getWorkflowRun` endpoint, which allows the action to check if the workflow was triggered by dependabot and if it failed.
 
 ## Notes
 
@@ -109,6 +119,10 @@ permissions:
 - The action will skip if reviewers are already requested to avoid spam
 - Comments are deduplicated by exact body match
 - If no PR is associated with the workflow run, the action will exit gracefully
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
 ## Development
 
