@@ -110,6 +110,18 @@ permissions:
 - Comments are deduplicated by exact body match
 - If no PR is associated with the workflow run, the action will exit gracefully
 
+## Development
+
+If you want to contribute to this action:
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Make your changes to `index.js`
+4. Build the action: `npm run build`
+5. Commit both `index.js` and `dist/index.js`
+
+The action uses `@vercel/ncc` to bundle the code and dependencies into a single file in the `dist/` directory.
+
 ## License
 
 This project is distributed under the [MIT license](LICENSE).
