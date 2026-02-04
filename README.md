@@ -74,6 +74,20 @@ jobs:
           comment: '🚨 Dependabot PR failed checks. Please review!'
 ```
 
+### CODEOWNERS Compatibility
+
+⚠️ **This action works best when dependency files are NOT covered by CODEOWNERS.**
+
+If you have CODEOWNERS rules for files like `package.json`, `package-lock.json`, etc., GitHub will automatically assign those code owners as reviewers on every dependabot PR. This means:
+
+- Your specified reviewers won't be added (action skips if reviewers already exist)
+- CODEOWNERS get notified on ALL dependabot PRs, not just failures
+- You lose the benefit of selective notifications
+
+**Recommended setup:**
+- Remove dependency files from CODEOWNERS
+- Let this action handle dependabot notifications instead
+
 ## Inputs
 
 | Input | Description | Required | Default |
